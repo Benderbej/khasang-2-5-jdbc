@@ -13,8 +13,6 @@ public class Main {
 
     }
 
-
-
 //    1. Какие проекты в работе (по которым есть хотя бы одна незавершенная задача).
     public ArrayList<Project> getProjectsInWork(){
         ArrayList<Project> projectList = new ArrayList<Project>();
