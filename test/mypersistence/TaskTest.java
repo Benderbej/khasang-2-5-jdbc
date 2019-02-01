@@ -25,6 +25,7 @@ public class TaskTest {
     public void checkIfExpiredTest() throws Exception {
 
 
+
         Calendar c = Calendar.getInstance();
         c.set(2005, 4, 5);//текущая дата подменяется подставной
         Date today = c.getTime();

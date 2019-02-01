@@ -14,15 +14,22 @@ public class Task {
     private long lifeTimeLong;//long
 
     public static void main(String[] args) {
-        java.util.Date today = new java.util.Date(2005, 4, 6);
+
 
         Calendar c = Calendar.getInstance();
+        c.set(2005, 4, 5);//текущая дата подменяется подставной
+        Date today = c.getTime();
+        System.out.println(today);
+
         c.set(2005, 4, 6);
-        today = c.getTime();
+        Date startDay = c.getTime();
+        System.out.println(startDay);
 
 
         Task task = new Task();
-        boolean b = task.checkIfExpired(today, "2005-04-05 09:01:10", 86500l);//86500 sometime more than 24h
+        boolean b = task.checkIfExpired(today, startDay, 86500l);//86500 sometime more than 24h
+
+
     }
 
     public boolean checkIfExpired(Date today, String startTimestampString, long time){
