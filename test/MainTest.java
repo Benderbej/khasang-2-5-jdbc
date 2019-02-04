@@ -1,37 +1,51 @@
-
-
+import mypersistence.Project;
+import mypersistence.Responsible;
+import mypersistence.Task;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-class MainTest {
+public class MainTest {
+    Main main;
 
-    @Test
-    void main() {
+    @Before
+    public void beforeTest(){
+        main = new Main();
     }
 
     @Test
-    void getProjectsInWorkTest() {
-
+    public void getProjectsInWorkTest() {//TODO тест зависит от конкретных изменяемых данных - возможно имеет смысл дежрать тестовую базу данных заполненную тестовыми данными
+        ArrayList<Project> projectArrayList = main.getProjectsInWork();
+        assertTrue(projectArrayList != null);
+        assertEquals("рога", projectArrayList.get(0).getName());
     }
 
     @Test
-    void getNumOfActiveTasksTest() {
-
+    public void getNumOfActiveTasks() throws Exception {//TODO тест зависит от конкретных изменяемых данных - возможно имеет смысл дежрать тестовую базу данных заполненную тестовыми данными
+        assertEquals(4, main.getNumOfActiveTasks());
     }
 
     @Test
-    void getResponsiblesActiveTasksTest() {
-
+    public void getResponsiblesActiveTasks() throws Exception {//TODO тест зависит от конкретных изменяемых данных - возможно имеет смысл дежрать тестовую базу данных заполненную тестовыми данными
+        ArrayList<Task> resp1ActiveTasks = main.getResponsiblesActiveTasks("Остап");
+        assertTrue(resp1ActiveTasks != null);
+        assertEquals("подпилка рогов", resp1ActiveTasks.get(0).getName());
     }
 
     @Test
-    void getAllActiveTasksAndResponsiblesTest() {
-
+    public void getAllActiveTasksAndResponsibles() throws Exception {//TODO тест зависит от конкретных изменяемых данных - возможно имеет смысл дежрать тестовую базу данных заполненную тестовыми данными
+        ArrayList<Task> activeTasks = main.getAllActiveTasksAndResponsibles();
+        assertEquals("шлифовка рогов", activeTasks.get(1).getName());
+        assertEquals("Егор", activeTasks.get(1).getRespName());
     }
 
     @Test
-    void getLateResponsiblesTest() {
-
+    public void getExpiredResponsibles() throws Exception {//TODO тест зависит от конкретных изменяемых данных - возможно имеет смысл дежрать тестовую базу данных заполненную тестовыми данными
+        ArrayList<Responsible> responsibles = main.getExpiredResponsibles();
+        assertEquals("Остап", responsibles.get(0).getName());
+        assertEquals("911", responsibles.get(0).getContactInfo());
     }
 }

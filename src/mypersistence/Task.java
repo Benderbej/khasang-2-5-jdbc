@@ -16,13 +16,29 @@ public class Task {
     private Timestamp startTimeStamp;
     private long startTime;
     private long lifeTimeLong;//long
+
+    private String respName;
     public static final DateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy", Locale.ENGLISH);
+
+    public Task(){ }
+
+    public Task(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Task(int id, String name, String respName) {
+        this.id = id;
+        this.name = name;
+        this.respName = respName;
+    }
 
     public static void main(String[] args) {
         Calendar c = Calendar.getInstance();
         c.set(2005, 4, 5);//текущая дата подменяется подставной
         Date today = c.getTime();
         System.out.println(today);
+
         c.set(2005, 4, 6);
         Date startDay = c.getTime();
         System.out.println(startDay);
@@ -76,5 +92,9 @@ public class Task {
 
     public long getLifeTimeLong() {
         return lifeTimeLong;
+    }
+
+    public String getRespName() {
+        return respName;
     }
 }
